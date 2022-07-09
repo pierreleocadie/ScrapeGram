@@ -3,6 +3,4 @@ __pycache__
 /brouillon
 brouillon.ipynb
 session_save.pickle
-settings.json diff="username_account"
-settings.json diff="password_password"
-settings.json diff="username_target_account"
+settings.json
