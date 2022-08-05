@@ -2,8 +2,8 @@ import requests, json, constants, time, random
 
 class Queries:
     
-    def random_sleep_timer(self) -> None:
-        timer: int = random.randint(3, 10)
+    def random_sleep_timer(self, min_delay_between_requests: int, max_delay_between_requests: int) -> None:
+        timer: int = random.randint(min_delay_between_requests, max_delay_between_requests)
         print(f"Sleeping for {timer} seconds")
         time.sleep(timer)
     
@@ -17,7 +17,7 @@ class Queries:
             return None
     
     # Get the followers list of the user
-    def get_followers_list(self, user_id: str, auth_session: requests.Session) -> list:
+    def get_followers_list(self, user_id: str, auth_session: requests.Session, max_number_of_edges_to_get: int, min_delay_between_requests: int, max_delay_between_requests: int) -> list:
         url_to_request: str = constants.BASED_URL + f"graphql/query/?query_id=17851374694183129&id={user_id}&first=10"
         request: str = auth_session.get(url_to_request)
         edges = []
@@ -26,22 +26,24 @@ class Queries:
             has_next_page = json_data["data"]["user"]["edge_followed_by"]["page_info"]["has_next_page"]
             numbers_of_followers = json_data["data"]["user"]["edge_followed_by"]["count"]
             edges.append(json_data["data"]["user"]["edge_followed_by"]["edges"])
-            """ while has_next_page:
-                end_cursor = json_data["data"]["user"]["edge_followed_by"]["page_info"]["end_cursor"]
-                url_to_request = constants.BASED_URL + f"graphql/query/?query_id=17851374694183129&id={user_id}&first=10&after={end_cursor}"
-                self.random_sleep_timer()
-                request = auth_session.get(url_to_request)
-                if request.status_code == 200:
-                    json_data = json.loads(request.text)
-                    has_next_page = json_data["data"]["user"]["edge_followed_by"]["page_info"]["has_next_page"]
+            if max_number_of_edges_to_get > 1:
+                for _ in range(1, max_number_of_edges_to_get):
+                    while has_next_page:
+                        end_cursor = json_data["data"]["user"]["edge_followed_by"]["page_info"]["end_cursor"]
+                        url_to_request = constants.BASED_URL + f"graphql/query/?query_id=17851374694183129&id={user_id}&first=10&after={end_cursor}"
+                        self.random_sleep_timer(min_delay_between_requests, max_delay_between_requests)
+                        request = auth_session.get(url_to_request)
+                        if request.status_code == 200:
+                            json_data = json.loads(request.text)
+                            has_next_page = json_data["data"]["user"]["edge_followed_by"]["page_info"]["has_next_page"]
+                            edges.append(json_data["data"]["user"]["edge_followed_by"]["edges"])
                     edges.append(json_data["data"]["user"]["edge_followed_by"]["edges"])
-            edges.append(json_data["data"]["user"]["edge_followed_by"]["edges"]) """
             return edges
         else:
             return None
     
     # Get the following list of the user
-    def get_following_list(self, user_id: str, auth_session: requests.Session) -> list:
+    def get_following_list(self, user_id: str, auth_session: requests.Session, max_number_of_edges_to_get: int, min_delay_between_requests: int, max_delay_between_requests: int) -> list:
         url_to_request: str = constants.BASED_URL + f"graphql/query/?query_id=17874545323001329&id={user_id}&first=10"
         request: str = auth_session.get(url_to_request)
         edges = []
@@ -50,15 +52,18 @@ class Queries:
             print(json_data)
             has_next_page = json_data["data"]["user"]["edge_follow"]["page_info"]["has_next_page"]
             edges.append(json_data["data"]["user"]["edge_follow"]["edges"])
-            """ while has_next_page:
-                end_cursor = json_data['data']['user']['edge_follow']['page_info']['end_cursor']
-                url_to_request = constants.BASED_URL + f"graphql/query/?query_id=17874545323001329&id={user_id}&first=10&after={end_cursor}"
-                request = auth_session.get(url_to_request)
-                if request.status_code == 200:
-                    json_data = json.loads(request.text)
-                    has_next_page = json_data["data"]["user"]["edge_follow"]["page_info"]["has_next_page"]
+            if max_number_of_edges_to_get > 1:
+                for _ in range(1, max_number_of_edges_to_get):
+                    while has_next_page:
+                        end_cursor = json_data['data']['user']['edge_follow']['page_info']['end_cursor']
+                        url_to_request = constants.BASED_URL + f"graphql/query/?query_id=17874545323001329&id={user_id}&first=10&after={end_cursor}"
+                        self.random_sleep_timer(min_delay_between_requests, max_delay_between_requests)
+                        request = auth_session.get(url_to_request)
+                        if request.status_code == 200:
+                            json_data = json.loads(request.text)
+                            has_next_page = json_data["data"]["user"]["edge_follow"]["page_info"]["has_next_page"]
+                            edges.append(json_data["data"]["user"]["edge_follow"]["edges"])
                     edges.append(json_data["data"]["user"]["edge_follow"]["edges"])
-            edges.append(json_data["data"]["user"]["edge_follow"]["edges"]) """
             return edges
         else:
             return None

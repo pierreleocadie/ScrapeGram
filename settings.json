@@ -2,7 +2,7 @@
     "username_account": "username",
     "password_account": "password",
     "username_target_account": "target",
-    "min_delay_between_requests": "3",
-    "max_delay_between_requests": "10",
-    "number_of_edges": "1"
+    "min_delay_between_requests": 3,
+    "max_delay_between_requests": 10,
+    "max_number_of_edges_to_get": 1
 }

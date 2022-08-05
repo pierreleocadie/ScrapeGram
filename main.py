@@ -17,7 +17,11 @@ def main() -> None:
     
     if not os.path.exists("data/followers_data.pickle"):
         print("No followers data found. Generating...")
-        followers_data = queries.get_followers_list(user_id, session)
+        followers_data = queries.get_followers_list(user_id, 
+                                                    session, 
+                                                    settings["max_number_of_edges_to_get"], 
+                                                    settings["min_delay_between_requests"], 
+                                                    settings["max_delay_between_requests"])
         if not os.path.exists("data"):
             os.mkdir("data")
         with open("data/followers_data.pickle", 'wb') as f:
@@ -30,7 +34,11 @@ def main() -> None:
     
     if not os.path.exists("data/following_data.pickle"):
         print("No following data found. Generating...")
-        following_data = queries.get_following_list(user_id, session)
+        following_data = queries.get_following_list(user_id, 
+                                                    session, 
+                                                    settings["max_number_of_edges_to_get"], 
+                                                    settings["min_delay_between_requests"], 
+                                                    settings["max_delay_between_requests"])
         if not os.path.exists("data"):
             os.mkdir("data")
         with open("data/following_data.pickle", 'wb') as f:
