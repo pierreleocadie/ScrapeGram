@@ -17,6 +17,10 @@ This project allows you to collect someone's account data from Instagram. Here a
 
 I've more ideas for features, I'll update this README file to make it clear at the right time.
 
+## Before install
+
+**DISCLAIMER : ScrapeGram IS FOR EDUCATIONAL PURPOSE ONLY. By using ScrapeGram, you are violating the Instagram community rules, so do not use your personal Instagram account with ScrapeGram or you will be banned. Use ScrapeGram at your own risk.***
+
 ## How to install ScrapeGram ?
 
 Clone the repo :
