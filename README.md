@@ -1,3 +1,4 @@
+![logo](https://cdn.discordapp.com/attachments/764495556801331211/1005884280796368906/Logo-white.png)
 # ScrapeGram
 
 ##  Scraping data from Instagram
@@ -34,7 +35,7 @@ pip install -r requirements.txt
 
 ## Setup  ScrapeGram
 
-In the ```src/``` folder open the ```settings.json``` file. Provide your username and password to allow ScrapeGram to log into your Instagram account, and then provide the username of the target you want to collect data on.
+In the ```src/``` folder open the ```settings.json``` file. Provide your username and password to allow ScrapeGram to log into your Instagram account. Then provide the username of the target you want to collect data on.
 
 ```json
 "username_account": "your_username",
