@@ -2,7 +2,7 @@
 
 ##  Scraping data from Instagram
 
-This project allows you to collect someone's account data from Instagram. Here a bunch of data that you can collect with this tool :
+This project allows you to collect data from someone's Instagram account. Here a bunch of data that you can collect with this tool :
 
 - Currently available :
     * Followers list 
