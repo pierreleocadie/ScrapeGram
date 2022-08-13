@@ -1,8 +1,13 @@
-import os
+import os, datetime
 
 BASED_URL: str = "https://www.instagram.com"
 LOGIN_URL: str = f"{BASED_URL}/accounts/login/ajax/?hl=fr"
 MID_URL: str = f"{BASED_URL}/web/__mid/"
+
+if not os.path.exists(os.path.join("src", "logs")):
+    os.mkdir(os.path.join("src", "logs"))
+
+LOGS_PATH: str = os.path.join("src", "logs", f"{datetime.date.today()}.log")
 
 SESSION_SAVE_FILE_PATH: str = os.path.join("src", "session_saves", "session_save.pickle")
 SETTINGS_FILE_PATH: str = os.path.join("src", "settings.json")
