@@ -2,9 +2,10 @@ from Queries import Queries
 from SessionProcessing import SessionProcessing
 from utils.generate_data_file import generate_data_file
 from utils.load_data_file import load_data_file
-import requests, constants, logging
+import requests, constants, logging, logging_config
 
 def follow_data_processing(follow_data: list) -> list:
+    logging.info(f"Processing and printing followers/following data")
     for edge in follow_data:
         for follow in edge:
             print("{:<20}{:>20}".format(follow["node"]["id"], follow["node"]["username"]))

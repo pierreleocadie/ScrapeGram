@@ -1,11 +1,10 @@
-import os
-import requests, json, constants, time, random
+import requests, json, constants, time, random, logging
 
 class Queries:
     
     def random_sleep_timer(self, min_delay_between_request: int, max_delay_between_request: int) -> None:
         timer: int = random.randint(min_delay_between_request, max_delay_between_request)
-        print(f"Sleeping for {timer} seconds")
+        logging.debug(f"Sleeping for {timer} seconds")
         time.sleep(timer)
     
     # Get the id of the instagram target user
@@ -13,7 +12,10 @@ class Queries:
         url_to_request: str = f"{constants.BASED_URL}/{username}"
         request: str = auth_session.get(url_to_request)
         if request.status_code == 200:
-            return request.text.split('"id":"')[1].split('","')[0]
+            user_id: str = request.text.split('"id":"')[1].split('","')[0]
+            logging.debug(f"User id: {user_id}")
+            logging.info(f"User id found for {username} : {user_id}")
+            return user_id
         else:
             return None
     
