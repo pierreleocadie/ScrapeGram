@@ -5,3 +5,6 @@ brouillon.ipynb
 /src/session_saves
 /OUTPUT
 *.log
+/TMP
+*.dtmp
+*.bkp

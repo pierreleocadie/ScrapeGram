@@ -26,9 +26,14 @@ def main() -> None:
     followers_data: dict = load_data_file(constants.USER_OUTPUT_FOLLOWERS_DATA_FILE_PATH)
     following_data: dict = load_data_file(constants.USER_OUTPUT_FOLLOWING_DATA_FILE_PATH)
     
+    print("FOLLOWERS : ")
     follow_data_processing(followers_data)
-    print("\n")
+    print("\nFOLLOWING : ")
     follow_data_processing(following_data)
+    print("\n")
+    print("Target profile private ? ", queries.is_user_profile_private(settings["username_target_account"], session))
+    print("Bio : ", queries.get_biography(settings["username_target_account"], session))
+    print("Done")
 
 if __name__ == "__main__":
     main()

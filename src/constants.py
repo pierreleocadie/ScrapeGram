@@ -3,14 +3,20 @@ import os, datetime
 BASED_URL: str = "https://www.instagram.com"
 LOGIN_URL: str = f"{BASED_URL}/accounts/login/ajax/?hl=fr"
 MID_URL: str = f"{BASED_URL}/web/__mid/"
+WEB_PROFILE_INFO_URL: str = "https://i.instagram.com/api/v1/users/web_profile_info/?username="
+IG_APP_ID_URL: str = "https://www.instagram.com/static/bundles/es6/ConsumerLibCommons.js/faada8fcb55f.js"
 
 if not os.path.exists(os.path.join("src", "logs")):
     os.mkdir(os.path.join("src", "logs"))
-
 LOGS_PATH: str = os.path.join("src", "logs", f"{datetime.date.today()}.log")
 
+if not os.path.exists(os.path.join("src", "session_saves")):
+    os.mkdir(os.path.join("src", "session_saves"))
 SESSION_SAVE_FILE_PATH: str = os.path.join("src", "session_saves", "session_save.pickle")
 SETTINGS_FILE_PATH: str = os.path.join("src", "settings.json")
+
+TMP_FOLDER_PATH: str = "TMP"
+USER_WEB_PROFILE_INFO_FILE_PATH: str = lambda username : os.path.join(TMP_FOLDER_PATH, f"{username}_web_profile_info.json")
 
 USER_OUTPUT_FOLDER_PATH: str = "OUTPUT"
 USER_OUTPUT_FOLLOWING_DATA_FILE_PATH: str = os.path.join(USER_OUTPUT_FOLDER_PATH, "following_data.pickle")
