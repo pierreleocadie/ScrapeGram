@@ -24,7 +24,7 @@ I've more ideas for features, I'll update this README file to make it clear at t
 
 ## How to install ScrapeGram ?
 
-You must be using Python version ```3.10.0 or later.
+**You must be using Python version ```3.10.0``` or later.**
 
 Clone the repo :
 ```bash
