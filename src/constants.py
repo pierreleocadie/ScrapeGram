@@ -3,7 +3,7 @@ import os, datetime
 BASED_URL: str = "https://www.instagram.com"
 LOGIN_URL: str = f"{BASED_URL}/accounts/login/ajax/?hl=fr"
 MID_URL: str = f"{BASED_URL}/web/__mid/"
-WEB_PROFILE_INFO_URL: str = "https://i.instagram.com/api/v1/users/web_profile_info/?username="
+WEB_PROFILE_INFO_URL: str = lambda username : f"https://i.instagram.com/api/v1/users/web_profile_info/?username={username}"
 IG_APP_ID_URL: str = "https://www.instagram.com/static/bundles/es6/ConsumerLibCommons.js/faada8fcb55f.js"
 
 if not os.path.exists(os.path.join("src", "logs")):

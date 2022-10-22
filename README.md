@@ -24,6 +24,8 @@ I've more ideas for features, I'll update this README file to make it clear at t
 
 ## How to install ScrapeGram ?
 
+**You must be using Python version ```3.10.0``` or later.**
+
 Clone the repo :
 ```bash
 git clone git@github.com:pierreleocadie/ScrapeGram.git
@@ -62,3 +64,5 @@ or
 ```bash
 python3 main.py
 ```
+
+## How does ScrapeGram work ?

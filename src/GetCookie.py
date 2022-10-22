@@ -1,7 +1,7 @@
 import requests, json, logging, constants
 from bs4 import BeautifulSoup
 
-class GetCookies:
+class GetCookie:
     
     def get_csrftoken(self) -> str:
         request = requests.get(constants.BASED_URL)

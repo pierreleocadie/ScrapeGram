@@ -1,7 +1,7 @@
 import requests, constants, logging
 from bs4 import BeautifulSoup
 
-class GetHeaders:
+class GetHeader:
     
     def get_ig_set_password_encryption_web_key_id(self) -> str:
         request = requests.get(constants.LOGIN_URL)
@@ -29,4 +29,4 @@ class GetHeaders:
     
 
 if __name__ == "__main__":
-    print(GetHeaders().get_ig_app_id())
+    print(GetHeader().get_ig_app_id())

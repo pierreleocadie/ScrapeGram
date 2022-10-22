@@ -4,7 +4,10 @@ __pycache__
 brouillon.ipynb
 /src/session_saves
 /OUTPUT
-*.log
+/src/logs
 /TMP
 *.dtmp
 *.bkp
+Database.py
+*.sql
+.DS_Store

@@ -32,6 +32,8 @@ def main() -> None:
     follow_data_processing(following_data)
     print("\n")
     print("Target profile private ? ", queries.is_user_profile_private(settings["username_target_account"], session))
+    print("Number of followers : ", queries.get_number_of_followers(settings["username_target_account"], session))
+    print("Number of following : ", queries.get_number_of_following(settings["username_target_account"], session))
     print("Bio : ", queries.get_biography(settings["username_target_account"], session))
     print("Done")
 

@@ -1,5 +1,5 @@
 import requests, json, constants, logging, os
-from GetHeaders import GetHeaders
+from GetHeader import GetHeader
 from utils.random_sleep_timer import random_sleep_timer
 
 class Queries:
@@ -61,11 +61,11 @@ class Queries:
 
     # Download the target user web profile info to avoid doing too many requests
     def download_web_profile_info(self, username_target_account: str, auth_session: requests.Session) -> None:
-        url_to_request: str = f"{constants.WEB_PROFILE_INFO_URL}{username_target_account}"
+        url_to_request: str = constants.WEB_PROFILE_INFO_URL(username_target_account)
         new_auth_session: requests.Session = self.duplicate_session(auth_session)
         logging.debug(f"URL to request: {url_to_request}")
         logging.debug(f"Session duplicated, Session cookies: {new_auth_session.cookies.keys()}")
-        request: str = requests.get(url_to_request, cookies=new_auth_session.cookies, headers={"X-IG-App-ID": GetHeaders().get_ig_app_id()})
+        request: str = requests.get(url_to_request, cookies=new_auth_session.cookies, headers={"X-IG-App-ID": GetHeader().get_ig_app_id()})
         if request.status_code == 200:
             json_data: dict = json.loads(request.text)
             if not os.path.exists(constants.TMP_FOLDER_PATH):
@@ -81,6 +81,11 @@ class Queries:
         with(open(constants.USER_WEB_PROFILE_INFO_FILE_PATH(username_target_account), "r")) as file:
             json_data: dict = json.loads(file.read())
         return json_data
+    
+    # Delete the target user web profile info file
+    def delete_web_profile_info(self, username_target_account: str) -> None:
+        if os.path.exists(constants.USER_WEB_PROFILE_INFO_FILE_PATH(username_target_account)):
+            os.remove(constants.USER_WEB_PROFILE_INFO_FILE_PATH(username_target_account))
     
     # Check if the target user web profile info is already downloaded
     def check_if_web_profile_info_is_already_downloaded(self, username_target_account: str) -> bool:
