@@ -64,5 +64,8 @@ or
 ```bash
 python3 main.py
 ```
+<<<<<<< HEAD
 
 ## How does ScrapeGram work ?
+=======
+>>>>>>> 9efa832e8842c99ff9a655b1eaad184d8165ce0d
