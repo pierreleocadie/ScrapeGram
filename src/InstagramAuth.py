@@ -10,8 +10,8 @@ class InstagramAuth:
         self.session: requests.Session = requests.Session()
         self.username: str = username
         self.password: str = self.enc_password(password)
-        self.csrftoken: str = GetCookie.get_csrftoken()
-        self.mid: str = GetCookie.get_mid()
+        self.csrftoken: str = GetCookie().get_csrftoken()
+        self.mid: str = GetCookie().get_mid()
         
         self.session.headers.update({
             "user-agent": constants.USER_AGENT,
@@ -33,11 +33,11 @@ class InstagramAuth:
     
     def enc_password(self, password: str) -> str:
         logging.info("Encrypting password...")
-        key_id = int(GetHeader.get_ig_set_password_encryption_web_key_id())
+        key_id = int(GetHeader().get_ig_set_password_encryption_web_key_id())
         logging.debug(f"key_id : {key_id}")
-        pub_key = GetHeader.get_ig_set_password_encryption_web_pub_key()
+        pub_key = GetHeader().get_ig_set_password_encryption_web_pub_key()
         logging.debug(f"pub_key : {pub_key}")
-        key_version = int(GetHeader.get_ig_set_password_encryption_web_key_version())
+        key_version = int(GetHeader().get_ig_set_password_encryption_web_key_version())
         logging.debug(f"key_version : {key_version}")
         enc_password = encrypt_password(key_id, pub_key, password, key_version)
         logging.debug(f"enc_password : {enc_password}")
@@ -56,4 +56,4 @@ class InstagramAuth:
 
 
 if __name__ == "__main__":
-    print(InstagramAuth("username", "password").get_session())
+    print(InstagramAuth("username", "password").enc_password("password"))

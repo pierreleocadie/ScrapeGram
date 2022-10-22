@@ -1,5 +1,4 @@
 import requests, constants, logging
-from bs4 import BeautifulSoup
 
 class GetHeader:
     
@@ -29,4 +28,5 @@ class GetHeader:
     
 
 if __name__ == "__main__":
+    print(GetHeader().get_ig_set_password_encryption_web_key_id())
     print(GetHeader().get_ig_app_id())

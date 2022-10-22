@@ -11,3 +11,4 @@ brouillon.ipynb
 Database.py
 *.sql
 .DS_Store
+Dockerfile

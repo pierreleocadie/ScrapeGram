@@ -58,14 +58,21 @@ You can also change the parameters of the queries. You can change: - the minimum
 
 Run ScrapeGram in the ```main.py``` file or with these commands :
 ```bash
-python main.py
+cd ScrapeGram
+python src/main.py
 ```
 or 
 ```bash
-python3 main.py
+cd ScrapeGram
+python3 src/main.py
 ```
-<<<<<<< HEAD
-
-## How does ScrapeGram work ?
-=======
->>>>>>> 9efa832e8842c99ff9a655b1eaad184d8165ce0d
+or
+```bash
+cd ScrapeGram
+python src/main.py -u [your_username] -p [your_password] -t [username_of_the_target]
+```
+or
+```bash
+cd ScrapeGram
+python3 src/main.py -u [your_username] -p [your_password] -t [username_of_the_target]
+```
