@@ -42,7 +42,7 @@ class SessionProcessing:
                 logging.info("Cookies not expired")
                 return False
     
-    def auth_session(self, settings) -> requests.Session:
+    def auth_session(self, settings: dict) -> requests.Session:
         if self.check_session_save_file():
             session = self.load_session()
             if self.verify_cookies_expire(session) is False:
