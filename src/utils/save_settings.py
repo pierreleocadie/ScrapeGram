@@ -10,4 +10,4 @@ def save_settings(username: str, password: str, target_account: str) -> None:
         f.write(json.dumps(settings, indent=4))
 
 if __name__ == "__main__":
-    save_settings("test", "test", "test")
+    save_settings("username", "password", "target_account")

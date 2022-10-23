@@ -15,7 +15,7 @@ def main() -> None:
     session_processing = SessionProcessing()
     queries = Queries()
 
-    if len(sys.argv) == 6 and sys.argv[1] == "-u" and sys.argv[3] == "-p" and sys.argv[5] == "-t":
+    if len(sys.argv) > 1 and sys.argv[1] == "-u" and sys.argv[3] == "-p" and sys.argv[5] == "-t":
         save_settings(sys.argv[2], sys.argv[4], sys.argv[6])
     settings: dict = session_processing.load_settings()
     session: requests.Session = session_processing.auth_session(settings)
